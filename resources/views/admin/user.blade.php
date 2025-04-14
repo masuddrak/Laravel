@@ -1,0 +1,1 @@
+<h1>admin user get_declared_interfaces</h1>
