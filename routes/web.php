@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserContoller;
-
+Route::get("messagecard",function(){
+    return view("messagecard");
+});
 Route::get('/', function () {
     return view('home');
 }); 
