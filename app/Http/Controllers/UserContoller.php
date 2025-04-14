@@ -21,8 +21,10 @@ class UserContoller extends Controller
     }
     function checkLoginPage()
     {
+        $name="siam";
+        $users=["masud","siam","tanabir"];
         if (view::exists("admin.login")) {
-            return view("admin.login");
+            return view("admin.login",["name"=>$name,"users"=>$users]);
         }else{
             echo "view not found";
         }
