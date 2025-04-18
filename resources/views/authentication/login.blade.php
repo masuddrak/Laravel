@@ -7,6 +7,12 @@
     @endforeach
 
 @endif
+<div>
+<!-- <h2>{{URL::current()}}</h2> -->
+<h2>{{url()->current()}}</h2>
+<h2>{{url()->full()}}</h2>
+<a href="{{URl::to('/')}}">Go to Home </a>
+</div>
 </div>
     <form action="loginInfo" method="post">
         @csrf
@@ -15,6 +21,10 @@
         <br>
         <input type="password" name="password" placeholder="Password" >
         <span>@error("password"){{$message}}@enderror</span>
+        <br>
+        <input type="text" name="city" placeholder="Type City" >
+        <span>@error("city"){{$message}}@enderror</span>
+
         <!-- <div>
             <div>
                 <input type="checkbox" name="sakil[]" id="java" value="java" >
