@@ -1,1 +1,0 @@
-<h1>This is About Page {{$name}}</h1>

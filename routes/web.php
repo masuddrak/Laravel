@@ -3,6 +3,9 @@
 use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamShow;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
+
 // Route::get("messagecard",function(){
 //     return view("messagecard");
 // });
@@ -28,7 +31,31 @@ use App\Http\Controllers\ExamShow;
 // Route::view("/login","authentication.login");
 // Route::post("loginInfo",[AuthenticationController::class,"login"]);
 
-Route::view("/exam","exam.home");
-// Route::view("/about/user","exam.about")->name("about");
+// Route::view("/exam", "exam.home")->name("exam");
 
-Route::get("/show/{name}",[ExamShow::class,"show"])->name("show");
+// // Route::view("/about/user","exam.about")->name("about");
+
+// Route::get("/show",[ExamShow::class,"show"]);
+
+
+Route::view("/","welcome");
+// group of route withe prefix
+// Route::prefix("user/add")->group(function(){
+//     Route::get(("/create"),[UserController::class,"create"]);
+//     Route::get(("/getuser"),[UserController::class,"getUsers"]);
+// });
+// // group of controller
+// Route::controller(StudentController::class)->group(function(){
+//     Route::get("student/{name}","getSudentName");
+// });
+// 
+
+// create middleware apply
+Route::view("user","user")->middleware("agecheck");
+Route::view ("home","home");
+
+// grup middleare
+Route::middleware("agecheck")->group(function(){
+    Route::view("user","user");
+    Route::view ("home","home");
+});
