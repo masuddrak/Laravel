@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamShow;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Services;
 use App\Http\Controllers\StudentController;
@@ -43,7 +44,7 @@ use App\Http\Middleware\AgeCheck;
 // Route::get("/show",[ExamShow::class,"show"]);
 
 
-Route::view("/","welcome");
+
 // group of route withe prefix
 // Route::prefix("user/add")->group(function(){
 //     Route::get(("/create"),[UserController::class,"create"]);
@@ -69,12 +70,15 @@ Route::view("/","welcome");
 // Route::get("services",[Services::class,"getServices"]);
 
 // database with data collection
-Route::get("users",[UserController::class,"getUsers"]);
-Route::view("form","form");
-// posts management
-// Route::any("/userpost",[PostController::class,"getPost"]);
-// match route
-Route::match(["post"],"/userpost",[PostController::class,"getPost"]);
-Route::view("service","service");
-Route::get("about",[AboutController::class,"getMessage"]);
-Route::post("cretaeAbout",[AboutController::class,"createMessage"]);
+// Route::get("users",[UserController::class,"getUsers"]);
+// Route::view("form","form");
+// // posts management
+// // Route::any("/userpost",[PostController::class,"getPost"]);
+// // match route
+// Route::match(["post"],"/userpost",[PostController::class,"getPost"]);
+// Route::view("service","service");
+// Route::get("about",[AboutController::class,"getMessage"]);
+// Route::post("cretaeAbout",[AboutController::class,"createMessage"]);
+Route::view("","welcome");
+
+Route::post("uploadImage",[HomeController::class,"uploaddImage"]);
