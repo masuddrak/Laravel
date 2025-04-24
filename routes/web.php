@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamShow;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\Services;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AgeCheck;
 
 // Route::get("messagecard",function(){
 //     return view("messagecard");
@@ -51,11 +55,22 @@ Route::view("/","welcome");
 // 
 
 // create middleware apply
-Route::view("user","user")->middleware("agecheck");
-Route::view ("home","home");
+// Route::view("user","user")->middleware("agecheck");
+// Route::view ("home","home");
 
-// grup middleare
-Route::middleware("agecheck")->group(function(){
-    Route::view("user","user");
-    Route::view ("home","home");
-});
+// // grup middleare
+// Route::middleware("agecheck")->group(function(){
+//     Route::view("user","user");
+//     Route::view ("home","home");
+// });
+// Route::view("about","about")->middleware(AgeCheck::class);
+// Route::get("contact",[ContactController::class,"users"]);
+// Route::get("services",[Services::class,"getServices"]);
+
+// database with data collection
+Route::get("users",[UserController::class,"getUsers"]);
+Route::view("form","form");
+// posts management
+// Route::any("/userpost",[PostController::class,"getPost"]);
+// match route
+Route::match(["post"],"/userpost",[PostController::class,"getPost"]);
