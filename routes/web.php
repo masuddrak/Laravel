@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
@@ -74,3 +75,6 @@ Route::view("form","form");
 // Route::any("/userpost",[PostController::class,"getPost"]);
 // match route
 Route::match(["post"],"/userpost",[PostController::class,"getPost"]);
+Route::view("service","service");
+Route::get("about",[AboutController::class,"getMessage"]);
+Route::post("cretaeAbout",[AboutController::class,"createMessage"]);

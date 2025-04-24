@@ -1,6 +1,7 @@
 <div>
+    {{session("name")}}
     <!-- The only way to do great work is to love what you do. - Steve Jobs -->
-    <form action="userpost" method="get">
+    <form action="userpost" method="post">
         <!-- <input type="hidden" name="_method" value="PUT"> -->
         @csrf
         <div>
