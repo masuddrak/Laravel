@@ -11,6 +11,7 @@ use App\Http\Controllers\Services;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AgeCheck;
+use Illuminate\Support\Facades\App;
 
 // Route::get("messagecard",function(){
 //     return view("messagecard");
@@ -82,3 +83,10 @@ use App\Http\Middleware\AgeCheck;
 Route::view("","welcome");
 
 Route::post("uploadImage",[HomeController::class,"uploaddImage"]);
+
+// describe laravel localization
+Route::view("about","about");
+Route::get("about/{lang}",function($lang){
+    App::setLocale($lang);
+    return view ("about");
+});
