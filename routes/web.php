@@ -12,6 +12,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AgeCheck;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 // Route::get("messagecard",function(){
 //     return view("messagecard");
@@ -80,13 +81,35 @@ use Illuminate\Support\Facades\App;
 // Route::view("service","service");
 // Route::get("about",[AboutController::class,"getMessage"]);
 // Route::post("cretaeAbout",[AboutController::class,"createMessage"]);
-Route::view("","welcome");
+// Route::view("","welcome");
 
-Route::post("uploadImage",[HomeController::class,"uploaddImage"]);
+// Route::post("uploadImage",[HomeController::class,"uploaddImage"]);
 
-// describe laravel localization
-Route::view("about","about");
-Route::get("about/{lang}",function($lang){
-    App::setLocale($lang);
-    return view ("about");
+// // describe laravel localization
+// Route::view("about","about");
+// Route::get("about/{lang}",function($lang){
+//     App::setLocale($lang);
+//     return view ("about");
+// });
+
+
+
+Route::middleware("changeLang")->group(function () {
+    Route::get("about", function () {
+
+        return view("about");
+    });
+    Route::get("service", function () {
+        return view("service");
+    });
+    Route::get("setlang/{lang}", function ($lang) {
+        Session::put("lang", $lang);
+        return redirect()->back();
+    });
 });
+Route::view("student", "add-student");
+Route::post("student", [StudentController::class, "addStudent"]);
+Route::get("student", [StudentController::class, "getStudents"]);
+Route::get("delete/{id}", [StudentController::class, "deleteStudent"]);
+Route::get("update/{id}", [StudentController::class, "updateStudent"]);
+Route::put("update-student/{id}", [StudentController::class, "updateInfo"]);

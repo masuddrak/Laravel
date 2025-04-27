@@ -5,8 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\App;
 
-class AgeCheck
+class LangMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,15 +16,10 @@ class AgeCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // echo "Age Check Middleware<br>";
-        // echo "<pre>";
-        // echo "<br/>";
-        // echo $request->age;
-        // echo "<br/>";
-        // print_r($request);
-        // echo "Your age is: ".$request->age."<br>";
-        if($request->age <18){
-            die("You are not allowed to access this page");
+
+        if ($request->session()->get("lang")) {
+
+            App::setLocale($request->session()->get("lang"));
         }
         return $next($request);
     }
