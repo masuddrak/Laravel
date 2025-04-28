@@ -113,3 +113,4 @@ Route::get("student", [StudentController::class, "getStudents"]);
 Route::get("delete/{id}", [StudentController::class, "deleteStudent"]);
 Route::get("update/{id}", [StudentController::class, "updateStudent"]);
 Route::put("update-student/{id}", [StudentController::class, "updateInfo"]);
+Route::get("search-name",[StudentController::class,"getSudentName"]);

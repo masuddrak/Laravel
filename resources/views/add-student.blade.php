@@ -4,7 +4,7 @@
         @csrf
         <div>
             <label for="name">Name</label>
-            <input type="text" name="name"  id="name">
+            <input type="text" name="name" id="name">
         </div>
         <div>
             <label for="email">Email</label>
@@ -16,7 +16,16 @@
         </div>
         <button type="submit">Submit</button>
     </form>
-    
+    <!-- search by student name -->
+    <form action="search-name" method="get">
+        <div style="display: flex; gap: 10px;">
+            <div>
+                <label for="name">Search by Name</label>
+                <input type="text" name="name" value="{{@$search}}" id="name" placeholder="Search by name">
+            </div>
+            <button type="submit">Search</button>
+        </div>
+    </form>
     <div>
         <table border="1">
             <tr>
@@ -39,5 +48,14 @@
             </tr>
             @endforeach
         </table>
+        <div>
+            {{$students->links()}}
+        </div>
     </div>
 </div>
+
+<style>
+    .w-5.h-5{
+        width: 15px;
+    }
+</style>

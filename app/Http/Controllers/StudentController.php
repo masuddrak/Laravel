@@ -27,7 +27,7 @@ class StudentController extends Controller
     // get all student
     function getStudents()
     {
-        $student = Student::all();
+        $student = Student::paginate(2);
         return view("add-student", ["students" => $student]);
     }
     function deleteStudent($id)
@@ -62,5 +62,16 @@ class StudentController extends Controller
         //     // return redirect("student");
         //     return redirect("student");
         // }
+    }
+    function getSudentName(Request $req)
+    {
+        $finndStudent=Student::where("name","like","%$req->name%")->get();
+        if($finndStudent){
+            return view("add-student",["students"=>$finndStudent,"search"=>$req->name]);
+        }
+        else{
+            echo "Student not found";
+        }
+      
     }
 }
