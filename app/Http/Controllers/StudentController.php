@@ -65,7 +65,8 @@ class StudentController extends Controller
     }
     function getSudentName(Request $req)
     {
-        $finndStudent=Student::where("name","like","%$req->name%")->get();
+        $finndStudent = Student::where("name", "like", "%$req->name%")->paginate(2)->appends(['name'=>$req->name]);
+
         if($finndStudent){
             return view("add-student",["students"=>$finndStudent,"search"=>$req->name]);
         }

@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamShow;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageContoller;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Services;
 use App\Http\Controllers\StudentController;
@@ -114,3 +115,12 @@ Route::get("delete/{id}", [StudentController::class, "deleteStudent"]);
 Route::get("update/{id}", [StudentController::class, "updateStudent"]);
 Route::put("update-student/{id}", [StudentController::class, "updateInfo"]);
 Route::get("search-name",[StudentController::class,"getSudentName"]);
+// user
+Route::view("users","users");
+Route::get("users",[UserController::class,"getUsers"]);
+Route::post("create-user",[UserController::class,"createUser"]);
+Route::post("delete-users",[UserController::class,"deleteUsers"]);
+// images upaload 
+Route::view("images","images");
+Route::post("upload-image",[ImageContoller::class,"uploadImage"]);
+Route::get("images",[ImageContoller::class,"getImages"]);
