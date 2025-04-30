@@ -114,13 +114,25 @@ Route::get("student", [StudentController::class, "getStudents"]);
 Route::get("delete/{id}", [StudentController::class, "deleteStudent"]);
 Route::get("update/{id}", [StudentController::class, "updateStudent"]);
 Route::put("update-student/{id}", [StudentController::class, "updateInfo"]);
-Route::get("search-name",[StudentController::class,"getSudentName"]);
+Route::get("search-name", [StudentController::class, "getSudentName"]);
 // user
-Route::view("users","users");
-Route::get("users",[UserController::class,"getUsers"]);
-Route::post("create-user",[UserController::class,"createUser"]);
-Route::post("delete-users",[UserController::class,"deleteUsers"]);
+Route::view("users", "users");
+Route::get("users", [UserController::class, "getUsers"]);
+Route::post("create-user", [UserController::class, "createUser"]);
+Route::post("delete-users", [UserController::class, "deleteUsers"]);
 // images upaload 
-Route::view("images","images");
-Route::post("upload-image",[ImageContoller::class,"uploadImage"]);
-Route::get("images",[ImageContoller::class,"getImages"]);
+Route::view("images", "images");
+Route::post("upload-image", [ImageContoller::class, "uploadImage"]);
+Route::get("images", [ImageContoller::class, "getImages"]);
+
+// component discuss
+Route::view("/", "home.main_containe");
+Route::view("/about", "home.about");
+Route::view("/service", "home.service");
+Route::view("/contact", "home.contact");
+// layout discuss
+
+Route::view("/", "layout.landing_page");
+Route::view("/about", "layout.about");
+Route::view("/service", "layout.service");
+Route::view("/contact", "layout.contact");

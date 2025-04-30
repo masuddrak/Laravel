@@ -7,7 +7,7 @@
         <button type="submit">Upload</button>
     </form>
     <div>
-        <div style="display: grid; grid-template-columns: repeat(5,1fr);gap: 20px; width: 80%;margin: auto;">
+        <div style="display: grid; grid-template-columns: repeat(5,1fr);gap: 20px; width: 1200px;margin: auto;">
 
             @foreach($images as $image)
 
