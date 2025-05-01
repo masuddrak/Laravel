@@ -136,3 +136,5 @@ Route::view("/", "layout.landing_page");
 Route::view("/about", "layout.about");
 Route::view("/service", "layout.service");
 Route::view("/contact", "layout.contact");
+
+Route::get("student", [StudentController::class, "getStudents"]);
